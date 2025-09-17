@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp8.MainPage"
+             Title="Hangman Game">
+
+    <ScrollView>
+        <Grid Padding="10" RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*">
+
+           
+            <!-- תמונת התלייה -->
+            <Image Source="hangman1.png" Grid.Row="1" HeightRequest="200" HorizontalOptions="Center"/>
+            <Image Source="{Binding HangmanImage}" Grid.Row="1" HeightRequest="200" HorizontalOptions="Center"/>
+
+            <!-- המילה הנוכחית -->
+            <Label Text="{Binding DisplayWord}" 
+                   Grid.Row="2"
+                   FontSize="28"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"/>
+
+            <Frame  CornerRadius="5" Padding="10" WidthRequest="250" HeightRequest="60">
+                <Entry x:Name="NameEntry" Placeholder="הכנס שם..." />
+            </Frame>
+
+            <Button Text="Check Score" Clicked="OnCheckScoreClicked" />
+
+            <Label x:Name="ScoreLabel" Text="Score Here:" FontSize="18" TextColor="White" FontAttributes="Bold" />
+
+
+            <!-- כפתורי האותיות -->
+            <FlexLayout Grid.Row="3" Wrap="Wrap" JustifyContent="Center" AlignItems="Center" Margin="10">
+                <!-- ניצור A-Z -->
+                <Button Text="A" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="B" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="C" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="D" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="E" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="F" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="G" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="H" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="I" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="J" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="K" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="L" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="M" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="N" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="O" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="P" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="Q" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="R" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="S" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="T" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="U" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="V" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="W" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="X" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="Y" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+                <Button Text="Z" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
+            </FlexLayout>
+
+            <!-- כפתורי שליטה -->
+            <StackLayout Grid.Row="4" Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
+                <Button TranslationY="200" WidthRequest="100" Text="Restart" Command="{Binding RestartCommand}" />
+                <Button TranslationY="200" WidthRequest="100" Text="Help" Clicked="Help_Clicked" />
+
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>
