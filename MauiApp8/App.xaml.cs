@@ -7,7 +7,7 @@
             InitializeComponent();
 
             // עוטף את MainPage בתוך NavigationPage כדי לאפשר Navigation.PushAsync
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new StartupPage());
 
         }
 

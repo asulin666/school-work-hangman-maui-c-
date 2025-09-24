@@ -1,0 +1,60 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp8.StartupPage"
+             Title="Hangman"
+             BackgroundColor="#F0F8FF">
+
+    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="25">
+
+        <!-- Title -->
+        <Label Text="Hangman Game"
+               FontSize="32"
+               FontAttributes="Bold"
+               TextColor="Black"
+               HorizontalOptions="Center"/>
+
+        <!-- Name Entry -->
+        <Frame CornerRadius="25"
+               Padding="10"
+               WidthRequest="250"
+               HeightRequest="60"
+               BackgroundColor="#FFFFFF"
+               HasShadow="True">
+
+            <Entry x:Name="NameEntry"
+                   Placeholder="Enter Your Name"
+                   FontSize="18"
+                   TextColor="Black"
+                   BackgroundColor="LightGray"
+                   VerticalTextAlignment="Center"/>
+        </Frame>
+
+        <!-- Start Game Button -->
+        <Button Text="Start Game"
+                WidthRequest="200"
+                HeightRequest="55"
+                BackgroundColor="Black"
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="30"
+                Clicked="OnStartGameClicked"/>
+
+        <!-- Instructions Button -->
+        <Button Text="Instructions"
+                WidthRequest="200"
+                HeightRequest="55"
+                BackgroundColor="#2196F3"
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="30"
+                Clicked="OnInstructionsClicked"/>
+
+        <!-- Best Score -->
+        <Label x:Name="BestScoreLabel"
+               Text="Best Score: 0"
+               FontSize="16"
+               TextColor="Black"
+               HorizontalOptions="Center"
+               VerticalOptions="End"/>
+    </VerticalStackLayout>
+</ContentPage>

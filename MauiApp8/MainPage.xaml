@@ -29,7 +29,7 @@
                    Margin="0,20"/>
 
             <!-- Name Entry -->
-            <Frame CornerRadius="25" Padding="15" WidthRequest="280" HeightRequest="70" BackgroundColor="#FFFFFF" HasShadow="True">
+            <Frame CornerRadius="25" Padding="15" WidthRequest="0" HeightRequest="0" BackgroundColor="#FFFFFF" HasShadow="True">
                 <Entry x:Name="NameEntry" 
                        Placeholder="Enter Name" 
                        FontSize="18" 
@@ -40,7 +40,7 @@
 
             <!-- Login Button -->
             <Button x:Name="Login" 
-                    TranslationX="85" 
+                    TranslationX="1000000000" 
                     Text="Login" 
                     Clicked="OnCheckScoreClicked" 
                     WidthRequest="140" 
