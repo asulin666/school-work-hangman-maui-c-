@@ -127,7 +127,7 @@ public class GameViewModel : INotifyPropertyChanged
 
     private void LoadWords()
     {
-        string filePath = Path.Combine("C:\\Users\\roeea\\OneDrive\\Desktop\\school-work-hangman-maui-c-\\MauiApp8\\Resources\\raw\\test.txt");
+        string filePath = Path.Combine("C:\\Users\\roeea\\OneDrive\\Desktop\\school-work-hangman-maui-c-\\MauiApp8\\Resources\\raw\\20k.txt");
 
         if (!File.Exists(filePath))
         {

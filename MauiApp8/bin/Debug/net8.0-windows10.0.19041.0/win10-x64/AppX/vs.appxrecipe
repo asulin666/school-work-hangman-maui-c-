@@ -30,7 +30,7 @@
     <AppXManifest Include="C:\Users\roeea\OneDrive\Desktop\school-work-hangman-maui-c-\MauiApp8\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2025-09-24T15:57:48.522</Modified>
+      <Modified>2025-09-24T16:07:20.829</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -44,11 +44,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\roeea\OneDrive\Desktop\school-work-hangman-maui-c-\MauiApp8\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\MauiApp8.dll">
       <PackagePath>MauiApp8.dll</PackagePath>
-      <Modified>2025-09-24T15:57:48.128</Modified>
+      <Modified>2025-09-24T16:07:19.684</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\roeea\OneDrive\Desktop\school-work-hangman-maui-c-\MauiApp8\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>MauiApp8.exe</PackagePath>
-      <Modified>2025-09-24T15:57:48.148</Modified>
+      <Modified>2025-09-24T16:07:19.742</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\roeea\OneDrive\Desktop\school-work-hangman-maui-c-\MauiApp8\Resources\Raw\20k.txt">
       <PackagePath>20k.txt</PackagePath>
