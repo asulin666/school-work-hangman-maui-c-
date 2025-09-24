@@ -2,24 +2,40 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp8.HelpPage"
-             Title="Help">
+             Title="Help"
+             BackgroundColor="#f5f5f5" Padding="0">
 
     <ScrollView Padding="20">
-        <VerticalStackLayout>
+        <VerticalStackLayout Spacing="20">
+
+            <!-- Title -->
             <Label Text="מדריך למשתמש - משחק איש תלוי" 
                    FontSize="24" 
                    FontAttributes="Bold" 
-                   HorizontalOptions="Center"/>
+                   HorizontalOptions="Center" 
+                   TextColor="#333"/>
 
-            <Label Text="• המטרה: לנחש את המילה המוסתרת." FontSize="18"/>
-            <Label Text="• יש לך 6 נסיונות שגויים לפני שהמשחק נגמר." FontSize="18"/>
-            <Label Text="• כל ניחוש נכון יחשוף אות במילה." FontSize="18"/>
-            <Label Text="• ניחוש שגוי מוסיף חלק לאיש התלוי." FontSize="18"/>
-            <Label Text="• נצחון מוסיף לך 10 נקודות לניקוד הכללי." FontSize="18"/>
-            <Label Text="• הניקוד נשמר בזיכרון גם אחרי סגירת האפליקציה." FontSize="18"/>
+            <!-- Help Content -->
+            <Label Text="• המטרה: לנחש את המילה המוסתרת." FontSize="18" TextColor="#333"/>
+            <Label Text="• יש לך 6 נסיונות שגויים לפני שהמשחק נגמר." FontSize="18" TextColor="#333"/>
+            <Label Text="• כל ניחוש נכון יחשוף אות במילה." FontSize="18" TextColor="#333"/>
+            <Label Text="• ניחוש שגוי מוסיף חלק לאיש התלוי." FontSize="18" TextColor="#333"/>
+            <Label Text="• נצחון מוסיף לך 10 נקודות לניקוד הכללי." FontSize="18" TextColor="#333"/>
+            <Label Text="• הניקוד נשמר בזיכרון גם אחרי סגירת האפליקציה." FontSize="18" TextColor="#333"/>
 
-            <Button TranslationY="200" Text="Home" Clicked="Home_Clicked" />
+            <!-- Home Button -->
+            <Button Text="חזרה" 
+                    BackgroundColor="#007BFF" 
+                    TextColor="White" 
+                    CornerRadius="30" 
+                    Padding="15"
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="200"
+                    HeightRequest="50"
+                    Clicked="Home_Clicked"/>
 
         </VerticalStackLayout>
     </ScrollView>
+
 </ContentPage>

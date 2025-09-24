@@ -15,6 +15,8 @@ public partial class MainPage : ContentPage
     private GameViewModel viewModel;
     private string currentPlayerName;
 
+    private List<Button> letterButtons;
+
     public MainPage()
     {
         InitializeComponent();
@@ -29,6 +31,28 @@ public partial class MainPage : ContentPage
                 ScoreLabel.Text = $"Hello {name}, Score: {newScore}";
             }
         };
+
+        letterButtons = new List<Button>
+        {
+            ButtonA, ButtonB, ButtonC, ButtonD, ButtonE, ButtonF, ButtonG, ButtonH,
+            ButtonI, ButtonJ, ButtonK, ButtonL, ButtonM, ButtonN, ButtonO, ButtonP,
+            ButtonQ, ButtonR, ButtonS, ButtonT, ButtonU, ButtonV, ButtonW, ButtonX,
+            ButtonY, ButtonZ
+        };
+
+        StartGame();
+    }
+    private async void Help_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new HelpPage());
+    }
+
+
+    private void StartGame()
+    {
+        ResetButtons();
+
+        viewModel.StartGame();
     }
 
     private void OnCheckScoreClicked(object sender, EventArgs e)
@@ -37,10 +61,11 @@ public partial class MainPage : ContentPage
 
         if (string.IsNullOrEmpty(name))
         {
-            ScoreLabel.Text = "Enter a real name!";
+
+            ScoreLabel.Text = "Enter a name!";
             return;
         }
-
+         
         currentPlayerName = name;
 
         int savedScore = Preferences.Get($"score_{name}", 0);
@@ -48,24 +73,25 @@ public partial class MainPage : ContentPage
         viewModel.SetPlayer(name, savedScore);
     }
 
-    private void LetterClicked(object sender, EventArgs e)
+private void LrClicked(object sender, EventArgs e)
+{
+    if (sender is Button button && !string.IsNullOrEmpty(button.Text))
     {
-        if (sender is Button button && !string.IsNullOrEmpty(button.Text))
-        {
-            char letter = button.Text[0];
-            viewModel.GuessLetter(letter);
-        }
-    }
+        char letter = button.Text[0];  
 
-    private async void Help_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new HelpPage());
+        button.IsEnabled = true;
+
+        viewModel.CheckGuess(letter);
     }
 }
-
-// -------------------------------------------------------------
-// GameViewModel Class
-// -------------------------------------------------------------
+    private void ResetButtons()
+    {
+        foreach (var button in letterButtons)
+        {
+            button.IsEnabled = true;  
+        }
+    }
+}
 
 public class GameViewModel : INotifyPropertyChanged
 {
@@ -80,7 +106,7 @@ public class GameViewModel : INotifyPropertyChanged
 
     public int Score { get; set; }
     public string DisplayWord { get; set; } = "";
-    public string HangmanImage { get; set; } = "hangman0.png";
+    public string HangmanImage { get; set; } = "hangman1.png";
 
     public int Lives
     {
@@ -89,7 +115,6 @@ public class GameViewModel : INotifyPropertyChanged
     }
 
     public Action<string, int> OnScoreChanged;
-
 
     public ICommand RestartCommand { get; }
 
@@ -102,11 +127,10 @@ public class GameViewModel : INotifyPropertyChanged
 
     private void LoadWords()
     {
-        string filePath = Path.Combine("C:\\Users\\Owner\\Desktop\\MauiApp8\\MauiApp8\\Resources\\Raw\\20k.txt");
+        string filePath = Path.Combine("C:\\Users\\roeea\\OneDrive\\Desktop\\school-work-hangman-maui-c-\\MauiApp8\\Resources\\raw\\test.txt");
 
         if (!File.Exists(filePath))
         {
-            // fallback default words
             words = new[] { "MAUI", "HANGMAN", "DOTNET", "MOBILE", "DEVELOPER" };
             return;
         }
@@ -131,22 +155,23 @@ public class GameViewModel : INotifyPropertyChanged
         }
     }
 
-    public void GuessLetter(char letter)
+    public void CheckGuess(char guessedLetter)
     {
-        Console.WriteLine($"Letter guessed: {letter}");
+        if (guessedLetters.Contains(guessedLetter)) return;
+        guessedLetters.Add(guessedLetter);
 
-        if (guessedLetters.Contains(letter)) return;
-        guessedLetters.Add(letter);
+        bool isCorrectGuess = false;
 
-        if (selectedWord.Contains(letter))
+        for (int i = 0; i < selectedWord.Length; i++)
         {
-            for (int i = 0; i < selectedWord.Length; i++)
+            if (selectedWord[i] == guessedLetter)
             {
-                if (selectedWord[i] == letter)
-                    guessedWord[i] = letter;
+                guessedWord[i] = guessedLetter;
+                isCorrectGuess = true;
             }
         }
-        else
+
+        if (!isCorrectGuess)
         {
             Lives--;
             UpdateHangmanImage();
@@ -172,6 +197,7 @@ public class GameViewModel : INotifyPropertyChanged
         }
     }
 
+
     public void StartGame()
     {
         if (words == null || words.Length == 0)
@@ -182,39 +208,27 @@ public class GameViewModel : INotifyPropertyChanged
 
         Random random = new();
         selectedWord = words[random.Next(words.Length)];
+
         guessedWord = new string('_', selectedWord.Length).ToCharArray();
+
         Lives = 6;
         guessedLetters.Clear();
+
         UpdateWordDisplay();
         UpdateHangmanImage();
     }
-
     private void UpdateWordDisplay()
     {
         DisplayWord = string.Join(" ", guessedWord);
-        OnPropertyChanged(nameof(DisplayWord));
+        OnPropertyChanged(nameof(DisplayWord));  
     }
 
     private void UpdateHangmanImage()
     {
-        HangmanImage = $"hangman{6 - Lives}.png";
+        HangmanImage = $"hangman{7 - Lives}.png";
         OnPropertyChanged(nameof(HangmanImage));
     }
 
     private void OnPropertyChanged([CallerMemberName] string name = null) =>
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-
-
-
-private void Help_Clicked(object sender, EventArgs e)
-    {
-        Application.Current.MainPage = new HelpPage();
-    }
-
-
 }
-
-
-
-
-

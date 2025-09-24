@@ -1,69 +1,101 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp8.MainPage"
-             Title="Hangman Game">
+             Title="Hangman Game"
+             BackgroundColor="#F0F8FF">
 
     <ScrollView>
-        <Grid Padding="10" RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*">
+        <Grid Padding="20" RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*">
 
-           
-            <!-- תמונת התלייה -->
-            <Image Source="hangman1.png" Grid.Row="1" HeightRequest="200" HorizontalOptions="Center"/>
-            <Image Source="{Binding HangmanImage}" Grid.Row="1" HeightRequest="200" HorizontalOptions="Center"/>
+            <!-- Image -->
+            <Image Source="hangman1.png" 
+        Grid.Row="1" 
+        HeightRequest="250" 
+        HorizontalOptions="Center" 
+        Margin="0,20"/>
+            <Image Source="{Binding HangmanImage}" 
+                   Grid.Row="1" 
+                   HeightRequest="250" 
+                   HorizontalOptions="Center" 
+                   Margin="0,20"/>
 
-            <!-- המילה הנוכחית -->
+            <!-- Word Display -->
             <Label Text="{Binding DisplayWord}" 
                    Grid.Row="2"
-                   FontSize="28"
+                   FontSize="32"
                    HorizontalOptions="Center"
-                   FontAttributes="Bold"/>
+                   FontAttributes="Bold"
+                   TextColor="#333"
+                   Margin="0,20"/>
 
-            <Frame  CornerRadius="5" Padding="10" WidthRequest="250" HeightRequest="60">
-                <Entry x:Name="NameEntry" Placeholder="הכנס שם..." />
+            <!-- Name Entry -->
+            <Frame CornerRadius="25" Padding="15" WidthRequest="280" HeightRequest="70" BackgroundColor="#FFFFFF" HasShadow="True">
+                <Entry x:Name="NameEntry" 
+                       Placeholder="Enter Name" 
+                       FontSize="18" 
+                       TextColor="#333" 
+                       BackgroundColor="Grey"
+                       VerticalTextAlignment="Center"/>
             </Frame>
 
-            <Button Text="Check Score" Clicked="OnCheckScoreClicked" />
+            <!-- Login Button -->
+            <Button x:Name="Login" 
+                    TranslationX="85" 
+                    Text="Login" 
+                    Clicked="OnCheckScoreClicked" 
+                    WidthRequest="140" 
+                    HeightRequest="60"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="30"
+                    Margin="0,20"/>
 
-            <Label x:Name="ScoreLabel" Text="Score Here:" FontSize="18" TextColor="White" FontAttributes="Bold" />
+            <Label x:Name="ScoreLabel" 
+                   FontSize="20" 
+                   TranslationY="-20"
+                   TextColor="Black" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Start"/>
 
+            <!-- Letter Buttons in FlexLayout -->
+            <ScrollView Grid.Row="3" Margin="0,20">
+                <FlexLayout Wrap="Wrap" JustifyContent="Center" AlignItems="Center" Margin="10">
+                    <!-- Styled Letter Buttons -->
+                    <Button x:Name="ButtonA" Text="A" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonB" Text="B" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonC" Text="C" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonD" Text="D" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonE" Text="E" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonF" Text="F" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonG" Text="G" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonH" Text="H" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonI" Text="I" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonJ" Text="J" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonK" Text="K" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonL" Text="L" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonM" Text="M" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonN" Text="N" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonO" Text="O" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonP" Text="P" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonQ" Text="Q" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonR" Text="R" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonS" Text="S" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonT" Text="T" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonU" Text="U" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonV" Text="V" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonW" Text="W" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonX" Text="X" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonY" Text="Y" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                    <Button x:Name="ButtonZ" Text="Z" Style="{DynamicResource LetterButtonStyle}" Clicked="LrClicked"/>
+                </FlexLayout>
+            </ScrollView>
 
-            <!-- כפתורי האותיות -->
-            <FlexLayout Grid.Row="3" Wrap="Wrap" JustifyContent="Center" AlignItems="Center" Margin="10">
-                <!-- ניצור A-Z -->
-                <Button Text="A" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="B" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="C" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="D" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="E" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="F" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="G" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="H" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="I" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="J" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="K" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="L" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="M" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="N" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="O" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="P" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="Q" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="R" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="S" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="T" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="U" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="V" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="W" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="X" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="Y" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-                <Button Text="Z" Clicked="LetterClicked" Style="{StaticResource LetterStyle}"/>
-            </FlexLayout>
-
-            <!-- כפתורי שליטה -->
+            <!-- Restart and Help Buttons -->
             <StackLayout Grid.Row="4" Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
-                <Button TranslationY="200" WidthRequest="100" Text="Restart" Command="{Binding RestartCommand}" />
-                <Button TranslationY="200" WidthRequest="100" Text="Help" Clicked="Help_Clicked" />
-
+                <Button TranslationY="200" WidthRequest="120" Text="Restart" Command="{Binding RestartCommand}" BackgroundColor="#FF9800" TextColor="White" FontAttributes="Bold" CornerRadius="20"/>
+                <Button TranslationY="200" WidthRequest="120" Text="Help" Clicked="Help_Clicked" BackgroundColor="#2196F3" TextColor="White" FontAttributes="Bold" CornerRadius="20"/>
             </StackLayout>
         </Grid>
     </ScrollView>
